@@ -1,4 +1,6 @@
-# RabbitMQ Setup Notes
+# RabbitMQ
+
+## Setup
 
 Following the [Using the Installer](https://www.rabbitmq.com/docs/install-windows#installer) instructions:
 
