@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.002.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "rabbitmq", "rabbitmq", "{045460BF-DB28-4C9C-8C97-D6F681943F3E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "getting-started", "getting-started", "{E269463B-FB8C-4A1C-9601-9CB5DF9F8C27}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "helloworld", "helloworld", "{3F659E38-3079-4F82-BB32-28D447BCF517}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Receive", "rabbitmq\getting-started\helloworld\Receive\Receive.csproj", "{2B6DA97E-FADB-454F-9F16-93725601EA2C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Send", "rabbitmq\getting-started\helloworld\Send\Send.csproj", "{56E90B97-F2AE-47DA-92FF-4C0FF0797533}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2B6DA97E-FADB-454F-9F16-93725601EA2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B6DA97E-FADB-454F-9F16-93725601EA2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B6DA97E-FADB-454F-9F16-93725601EA2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B6DA97E-FADB-454F-9F16-93725601EA2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56E90B97-F2AE-47DA-92FF-4C0FF0797533}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56E90B97-F2AE-47DA-92FF-4C0FF0797533}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56E90B97-F2AE-47DA-92FF-4C0FF0797533}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56E90B97-F2AE-47DA-92FF-4C0FF0797533}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E269463B-FB8C-4A1C-9601-9CB5DF9F8C27} = {045460BF-DB28-4C9C-8C97-D6F681943F3E}
+		{3F659E38-3079-4F82-BB32-28D447BCF517} = {E269463B-FB8C-4A1C-9601-9CB5DF9F8C27}
+		{2B6DA97E-FADB-454F-9F16-93725601EA2C} = {3F659E38-3079-4F82-BB32-28D447BCF517}
+		{56E90B97-F2AE-47DA-92FF-4C0FF0797533} = {3F659E38-3079-4F82-BB32-28D447BCF517}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A53133E6-DE5B-4946-87F1-45599EB347DC}
+	EndGlobalSection
+EndGlobal
