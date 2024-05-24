@@ -59,4 +59,4 @@ The AMQP 0-9-1 protocol predefines a set of 14 properties that go with a message
 * `DeliveryMode` - Those familiar with the protocol may choose to use this property instead of `Persistent`. They control the same thing.
 * `ContentType` - Used to describe the mime-type of the encoding. For example for the often used JSON encoding it is a good practice to set this property to: `application/json`.
 * `ReplyTo` - Commonly used to name a callback queue.
-* `CorrelcationId` - Useful to correlate RPC responses with requests.
+* `CorrelationId` - Useful to correlate RPC responses with requests.

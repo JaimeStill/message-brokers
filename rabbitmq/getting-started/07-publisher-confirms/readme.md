@@ -4,7 +4,7 @@
 
 In this tutorial, we're going to use publisher confirms to make sure published messages have safely reached the broker. We will cover several strategies to using publisher confirms and explain their pros and cons.
 
-![]()
+![image](https://github.com/JaimeStill/JaimeStill/assets/14102723/971f765f-ba6b-45dc-9778-af2def1771da)
 
 ## Enabling Publisher Confirms on a Channel
 
@@ -118,7 +118,7 @@ void CleanOutstandingConfirms(ulong sequenceNumber, bool multiple)
     IEnumerable<ulong> confirmed = multiple
         ? outstandingConfirms
             .Select(x => x.Key)
-            .Where(k => k < sequenceNumber)
+            .Where(k => k <= sequenceNumber)
         : [sequenceNumber];
 
     foreach (ulong key in confirmed)
