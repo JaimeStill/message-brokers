@@ -12,7 +12,12 @@ Follow the [Quickstart](https://kafka.apache.org/quickstart) guide in WSL:
 
 ### Step 1: Get Kafka
 
+Open Windows Terminal and run the following:
+
 ```bash
+# open wsl
+wsl
+
 # install java
 sudo apt update && sudo apt upgrade
 sudo apt install default-jre
