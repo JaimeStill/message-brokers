@@ -4,6 +4,8 @@ RabbitMQ is a message broker: it accepts and forwards messages. You can think ab
 
 The major difference between RabbitMQ and the post office is that it doesn't deal with paper, instead it accepts, stores, and forwards binary blobs of data - *messages*.
 
+See [Getting Started](./getting-started/) samples.
+
 ## Setup
 
 Following the [Using the Installer](https://www.rabbitmq.com/docs/install-windows#installer) instructions:
