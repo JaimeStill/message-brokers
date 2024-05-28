@@ -112,7 +112,82 @@ bin/kafka-console-consumer.sh --topic quickstart-events --from-beginning --boots
 
 ![image](https://github.com/JaimeStill/JaimeStill/assets/14102723/1b5e18d4-8400-47b3-af81-8f3739c3a70b)
 
-> TODO: Follow steps 6 and 7
+### Step 6: Import / Export Your Data as Streams of Events With Kafka Connect
+
+[Kafka Connect](https://kafka.apache.org/documentation/#connect) allows you to continuously ingest data from external systems into Kafka, and vice versa. It is an extensible tool that runs *connectors*, which implement the custom logic for interacting with an external system. It is thus very easy to integrate existing systems with Kafka. To make this process even easier, there are hundreds of such connectors readily available.
+
+In this quickstart, we'll see how to run Kafka Connect with simple connectors that import data from a file to a Kafka topic and export data from a Kafka topic to a file.
+
+Make sure to add the `connect-file-3.7.0.jar` to the `plugin.path` property in the Connect worker's configuration:
+
+```bash
+# open wsl and navigate to kafka
+wsl
+cd /mnt/c/kafka/kafka_2.13-3.7.0
+
+# open connect-standalone.properties
+nano config/connect-standalone.properties
+```
+
+![image](https://github.com/JaimeStill/JaimeStill/assets/14102723/99328a47-d7c3-43ed-83f5-2fe9c4bec1d1)
+
+Create seed data to test with:
+
+```bash
+echo -e "foo\nbar" > test.txt
+```
+
+We'll start with two connectors running in *standalone* mode, which means they run in a single, local, dedicated process. We provide three configuration files as parameters:
+
+* The first is always the configuration for the Kafka Connect process, containing common configuration such as the Kafka brokers to connecto to and the serialization format for data.
+* The remaining configuration files each specify a connector to create. These files include a unique connector name, the connector class to instantiate, and any other configuration required by the connector.
+
+```bash
+bin/connect-standalone.sh config/connect-standalone.properties config/connect-file-source.properties config/connect-file-sink.properties
+```
+
+These sample configuration files, included with Kafka, use the default local cluster configuration you started earlier and create two connectors: the first is a source connector that reads lines from an input file and produces each to a Kafka topic and the second is a sink connector that reads messages from a Kafka topic and produces each as a line in an output file.
+
+During startup, you'll see a number of log messages, including some indicating that the connectors are being instantiated. Once the Kafka Connect process has started, the source connector should start reading lines from `test.txt` and producing them to the topic `connect-test`, and the sink connector should start reading messages from the topic `connect-test` and write them to the file `test.sink.txt`. We can verify the data has been delivered through the entire pipeline by examining the contents of the output file:
+
+```bash
+more test.sink.txt
+```
+
+Note that the data is being stored in the Kafka topic `connect-test`, so we can also run a console consumer to see the data in the topic (or use custom consumer code to process it):
+
+```bash
+bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic connect-test --from-beginning
+```
+
+![image](https://github.com/JaimeStill/JaimeStill/assets/14102723/6be8017d-3bd8-47e7-92de-32e25a2d1ea0)
+
+THe connectors continue to process data, so we can add data to the file and see it move through the pipeline:
+
+```bash
+echo baz>> test.txt
+```
+
+![image](https://github.com/JaimeStill/JaimeStill/assets/14102723/e232b2cf-495a-44ef-8f72-d60fcebb3c27)
+
+### Step 7: Process Your Events With Kafka Streams
+
+Once your data is stored in Kafka as events, you can process the data with the [Kafka Streams]() client library for Java / Scala. It allows you to implement mission-critical real-time applications and microservices, where the input and/or output data is stored in Kafka topics. Kafka Streams combines the simplicity of writing an deploying standard Java and Scala applications on the client side with the benefits of Kafka's server-side cluster technology to make these applications highly scalable, elastic, fault-tolerant, and distributed. The library supports exactly-one processing, stateful operations and aggregations, windowing, joins, processing based on event-time, and much more.
+
+To give a first taste, here's how one would implement the popular `WordCount` algorithm:
+
+```java
+KStream<String, String> textLines = builder.stream("quickstart-events");
+
+KTable<String, Long> wordCounts = textLines
+    .flatMapValues(line -> Arrays.asList(line.toLowerCase().split(" ")))
+    .groupBy((keyIgnored, word) -> word)
+    .count();
+
+wordCounts.toStream().to("output-topic", Produced.with(Serdes.String(), Serdes.Long()));
+```
+
+The [Kafka Streams demo](https://kafka.apache.org/documentation/streams/quickstart) and the [app development tutorial](https://kafka.apache.org/37/documentation/streams/tutorial) demonstrate how to code and run such a streaming application from start to finish.
 
 ### Step 8: Terminate the Kafka Environment
 
