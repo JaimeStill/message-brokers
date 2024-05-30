@@ -1,4 +1,4 @@
-# In-Memory
+# [In-Memory](https://masstransit.io/quick-starts/in-memory)
 
 This tutorial will get you from zero to up and running with [In Memory](https://masstransit.io/documentation/transports/in-memory) and MassTransit.
 
@@ -130,6 +130,6 @@ Run the `InMemoryWorker` project:
 dotnet run
 ```
 
-![image](https://github.com/JaimeStill/JaimeStill/assets/14102723/9b402373-976d-4f92-b997-628d860fce8b)
-
 The output should change to show the message consumer generating the output. Use <kbd>Ctrl+C</kbd> to exit.
+
+![image](https://github.com/JaimeStill/JaimeStill/assets/14102723/9b402373-976d-4f92-b997-628d860fce8b)

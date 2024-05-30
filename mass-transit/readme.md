@@ -2,6 +2,8 @@
 
 MassTransit is an open-source distributed application framework for .NET that provides a consistent abstraction on top of the supported message transports. The interfaces provides by MassTransit reduce message-based application complexity and allow developers to focus their effort on adding business value.
 
+See [Getting Started](./getting-started/).
+
 It provides:
 
 * **Message Routing** - Type-based publish / subscribe and automatic broker topology configuration.
