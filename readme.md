@@ -15,3 +15,9 @@ See [rabbitmq](./rabbitmq/)
 Apache Kafka is an open-source distributed event streaming platform used by thousands of companies for high-performance data pipelines, streaming analytics, ndata integration, and mission-critical applications.
 
 See [kafka](./kafka).
+
+## [MassTransit](https://masstransit.io)
+
+MassTransit provides a developer-focused, modern platform for creating distributed applications without complexity.
+
+See [mass-transit](./mass-transit).

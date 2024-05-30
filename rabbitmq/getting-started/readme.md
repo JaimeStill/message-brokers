@@ -1,6 +1,6 @@
 # [Getting Started](https://www.rabbitmq.com/tutorials)
 
-These tutorials cover the basics of creating messaging applications using RabbitrMQ.
+These tutorials cover the basics of creating messaging applications using RabbitMQ.
 
 1. [Hello World](./01-helloworld/) - The simplest thing that does *something*.
 2. [Work Queues](./02-work-queues/) - Distibuting tasks among workers (competing consumers pattern).
