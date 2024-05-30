@@ -1,6 +1,6 @@
 # [RabbitMQ](https://masstransit.io/quick-starts/rabbitmq)
 
-This tutorial will get you from zero to up and running with [RabbitMQ](https://masstransit.io/documentation/transports/rabbitmq)S and MassTransit.
+This tutorial will get you from zero to up and running with [RabbitMQ](https://masstransit.io/documentation/transports/rabbitmq) and MassTransit.
 
 ## Prerequisites
 
