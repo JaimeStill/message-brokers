@@ -2,7 +2,8 @@
 
 MassTransit is an open-source distributed application framework for .NET that provides a consistent abstraction on top of the supported message transports. The interfaces provides by MassTransit reduce message-based application complexity and allow developers to focus their effort on adding business value.
 
-See [Getting Started](./getting-started/).
+* [Getting Started](./getting-started/)
+* [Documentation](./docs/)
 
 It provides:
 
@@ -15,11 +16,3 @@ It provides:
 * **Sagas, State Machines** - Reliable, durable, event-driven workflow orchestration.
 * **Routing Slip Activities** - Distributed, fault-tolerant transaction choreography with compensation.
 * **Request, Response** - Handle requests with fast, automatic response routing.
-
-## Install the Templates
-
-MassTransit includes project and item [templates](https://masstransit.io/quick-starts/templates) simplifying the creation of new projects. Install the templates by executing the following:
-
-```bash
-dotnet new install MassTransit.Templates
-```

@@ -1,0 +1,1 @@
+# [Exceptions](https://masstransit.io/documentation/concepts/exceptions)

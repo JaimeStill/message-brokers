@@ -25,3 +25,7 @@
 * [.NET Aspire](https://learn.microsoft.com/en-us/dotnet/aspire/get-started/aspire-overview)
     * [RabbitMQ Component](https://learn.microsoft.com/en-us/dotnet/aspire/messaging/rabbitmq-client-component?tabs=dotnet-cli)
     * [Kafka Component](https://learn.microsoft.com/en-us/dotnet/aspire/messaging/kafka-component?tabs=dotnet-cli)
+
+## Architecture
+
+* [Enterprise Integration Patterns](https://www.enterpriseintegrationpatterns.com/index.html)

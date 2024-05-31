@@ -1,0 +1,1 @@
+# [Mediator](https://masstransit.io/documentation/concepts/mediator)
