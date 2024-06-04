@@ -211,7 +211,7 @@ Sagas are configured in the same way, using the saga configurator.
 
 ## [Faults](https://masstransit.io/documentation/concepts/exceptions#faults)
 
-As shown above, MassTransit delivers messages to consumers by calling the *Consume* method. When a message consumer throws an exception instead of returning normally, a `Fault<T>` is produced, which may be published or sent depending upon the context.
+As shown above, MassTransit delivers messages to consumers by calling the `Consume` method. When a message consumer throws an exception instead of returning normally, a `Fault<T>` is produced, which may be published or sent depending upon the context.
 
 A `Fault<T>` is a generic message contract including the original message that caused the consumer to fail, as well as the `ExceptionInfo`, `HostInfo`, and the time of the exception.
 
@@ -227,7 +227,7 @@ public interface Fault<T> where T : class
 }
 ```
 
-If the message headers specify a `FaultAddress`, the fault is sent directly to that address. If the *FaultAddress* is not present, but a `ResponseAddress` is specified, the fault is sent to the response address. Otherwise, the fault is published, allowing any subscribed consumers to receive it.
+If the message headers specify a `FaultAddress`, the fault is sent directly to that address. If the `FaultAddress` is not present, but a `ResponseAddress` is specified, the fault is sent to the response address. Otherwise, the fault is published, allowing any subscribed consumers to receive it.
 
 ### [Consuming Faults](https://masstransit.io/documentation/concepts/exceptions#consuming-faults)
 
@@ -257,9 +257,9 @@ public Event<Fault<SubmitOrder>> SubmitOrderFaulted { get; private set; }
 
 ## [Error Pipe](https://masstransit.io/documentation/concepts/exceptions#error-pipe)
 
-By default, MassTransit will move faulted messages to the *_error* queue. This behavior can be customized for each receive endpoint.
+By default, MassTransit will move faulted messages to the `_error` queue. This behavior can be customized for each receive endpoint.
 
-To discard faulted messages so that they are *not* moved to the *_error* queue:
+To discard faulted messages so that they are *not* moved to the `_error` queue:
 
 ```cs
 cfg.ReceiveEndpoint("input_queue", e =>
@@ -285,9 +285,9 @@ cfg.ReceiveEndpoint("input-queue", e =>
 
 ## [Dead-Letter Pipe](https://masstransit.io/documentation/concepts/exceptions#dead-letter-pipe)
 
-By default, MassTransit will move skipped messages to the *_skipped* queue. This behavior can be customized for each receive endpoint.
+By default, MassTransit will move skipped messages to the `_skipped` queue. This behavior can be customized for each receive endpoint.
 
-To discard skipped messages so they are *not* moved to the *_skipped* queue:
+To discard skipped messages so they are *not* moved to the `_skipped` queue:
 
 ```cs
 cfg.ReceiveEndpoint("input-queue", e =>
