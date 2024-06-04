@@ -9,7 +9,7 @@ public class RabbitConsumer(ILogger<RabbitConsumer> logger) : IConsumer<RabbitCo
 
     public Task Consume(ConsumeContext<RabbitContract> context)
     {
-        logger.LogInformation($"Received Text: {context.Message.Value}");
+        logger.LogInformation("Received Text: {Value}", context.Message.Value);
         return Task.CompletedTask;
     }
 }
