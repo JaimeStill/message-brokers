@@ -4,6 +4,7 @@ MassTransit is an open-source distributed application framework for .NET that pr
 
 * [Getting Started](./getting-started/)
 * [Documentation](./docs/)
+* [Experiments](./experiments/)
 
 It provides:
 
