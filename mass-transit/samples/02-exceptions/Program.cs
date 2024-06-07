@@ -24,6 +24,7 @@ builder.Services.AddMassTransit(mt =>
     // add consumers
     mt.AddConsumer<DoomedConsumer>();
     mt.AddConsumer<FilterConsumer>();
+    mt.AddConsumer<RedeliveryConsumer>();
     mt.AddConsumer<RetryConsumer>();
 
     mt.UsingRabbitMq((context, cfg) =>
@@ -47,6 +48,17 @@ builder.Services.AddMassTransit(mt =>
             });
 
             e.ConfigureConsumer<FilterConsumer>(context);
+        });
+
+        cfg.ReceiveEndpoint("redelivery", e =>
+        {
+            /*
+                Immediately retry 3 times before
+                delaying 5 seconds between 3 more retries.
+            */
+            e.UseDelayedRedelivery(r => r.Interval(3, 5000));
+            e.UseMessageRetry(r => r.Immediate(3));
+            e.ConfigureConsumer<RedeliveryConsumer>(context);            
         });
 
         cfg.ReceiveEndpoint("retry", e =>
