@@ -1,1 +1,0 @@
-# [Configuration](https://masstransit.io/documentation/configuration)
