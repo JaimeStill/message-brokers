@@ -16,16 +16,10 @@ public class ErrorController(ErrorProducer producer) : ControllerBase
         return Ok();
     }
 
-    [HttpGet("[action]/{message}/{iterations:int}")]
-    public async Task<IActionResult> Retry([FromRoute]string message, [FromRoute]int iterations)
+    [HttpGet("[action]/{message}")]
+    public async Task<IActionResult> Fault([FromRoute]string message)
     {
-        await producer.Retry(new()
-        {
-            Value = message,
-            Iterations = iterations,
-            Attempts = 1
-        });
-
+        await producer.Fault(new() { Value = message });
         return Ok();
     }
 
@@ -58,6 +52,19 @@ public class ErrorController(ErrorProducer producer) : ControllerBase
             Value = message,
             Alert = alert,
             Retries = 0
+        });
+
+        return Ok();
+    }
+
+    [HttpGet("[action]/{message}/{iterations:int}")]
+    public async Task<IActionResult> Retry([FromRoute]string message, [FromRoute]int iterations)
+    {
+        await producer.Retry(new()
+        {
+            Value = message,
+            Iterations = iterations,
+            Attempts = 1
         });
 
         return Ok();

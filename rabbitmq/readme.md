@@ -26,6 +26,18 @@ Navigate to http://localhost:15672 and authenticate with:
 * Username: guest
 * Password: guest
 
+## Enable Redeliver Plugin
+
+The following steps will enable the [RabbitMQ Delayed Message Plugin](https://github.com/rabbitmq/rabbitmq-delayed-message-exchange).
+
+1. Download the [rabbitmq_server-<version>.ez](https://github.com/rabbitmq/rabbitmq-delayed-message-exchange/releases) plugin.
+    * The version should match the version of RabbitMQ that you are running. You can find this by running: `rabbitmq-diagnostics status`.
+2. Move the downloaded file to `C:\Program Files\RabbitMQ Server\rabbitmq_server-<version>\plugins`.
+3. Run the following to enable:
+    ```cmd
+    rabbitmq-plugins.bat enable rabbitmq_delayed_message_exchange
+    ```
+
 ## Concepts
 
 RabbitMQ, and messaging in general, uses some jargon.

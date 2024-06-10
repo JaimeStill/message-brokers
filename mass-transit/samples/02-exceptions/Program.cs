@@ -23,7 +23,9 @@ builder.Services.AddMassTransit(mt =>
 
     // add consumers
     mt.AddConsumer<DoomedConsumer>();
+    mt.AddConsumer<FaultyConsumer>();
     mt.AddConsumer<FilterConsumer>();
+    mt.AddConsumer<LogFaultConsumer>();
     mt.AddConsumer<RedeliveryConsumer>();
     mt.AddConsumer<RetryConsumer>();
 
@@ -36,8 +38,9 @@ builder.Services.AddMassTransit(mt =>
         cfg.ReceiveEndpoint("filter", e =>
         {
             /*
-                Process up to 4 times before faulting.
-                The initial attempt + 3 immedate retries.
+                Immediately retry up to 3 times for all Exceptions
+                other than an ArgumentException with a ParamName
+                value of volatile.
             */
             e.UseMessageRetry(r =>
             {
@@ -53,11 +56,11 @@ builder.Services.AddMassTransit(mt =>
         cfg.ReceiveEndpoint("redelivery", e =>
         {
             /*
-                Immediately retry 3 times before
+                Retry 3 times at an interval of 500ms before
                 delaying 5 seconds between 3 more retries.
             */
             e.UseDelayedRedelivery(r => r.Interval(3, 5000));
-            e.UseMessageRetry(r => r.Immediate(3));
+            e.UseMessageRetry(r => r.Interval(3, 500));
             e.ConfigureConsumer<RedeliveryConsumer>(context);            
         });
 
